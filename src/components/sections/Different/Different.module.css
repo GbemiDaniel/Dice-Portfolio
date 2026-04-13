@@ -1,0 +1,45 @@
+.sectionContainer {
+    width: 100%;
+}
+
+.differentWrapper {
+    width: 100%;
+}
+
+/* REMOVED: .glassCard - We will use the global .glass-panel utility instead for 100% consistency across the app */
+
+.differentCard {
+    /* REMOVED: padding: var(--spacing-card-pad) -> Now handled by Tailwind px-card-x py-card-y */
+    /* REMOVED: min-height: clamp(...) -> The aspect-ratio and text will dictate height natively! */
+    gap: clamp(2rem, 5vw, 4rem);
+}
+
+.avatarWrapper {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    flex-shrink: 0;
+    /* This wrapper is now a 100% invisible ghost frame. */
+}
+
+.contentWrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /* Forces left alignment */
+}
+
+@media (min-width: 768px) {
+    .avatarWrapper {
+        width: clamp(250px, 30cqw, 350px);
+        /* Taller portrait aspect ratio to match Figma */
+        aspect-ratio: 4 / 5;
+    }
+
+    .contentWrapper {
+        /* Pushes text slightly away from the image boundary */
+        padding-left: clamp(1rem, 3cqw, 3rem);
+    }
+}

@@ -1,0 +1,88 @@
+/* --- EXPERTISE MARQUEE --- */
+
+/* 1. Section Wrapper */
+.expertiseSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Tightened the gap between the tiny label and the marquee */
+    gap: var(--spacing-element-gap);
+    /* Reduced from container-y to card-pad to remove excessive dead space */
+    padding: var(--spacing-card-pad) 0;
+    overflow: hidden;
+}
+
+/* 2. Section Label — Made much smaller, uppercase, and elegant */
+/* 2. Section Label — Scaled up and restored to sentence case */
+.sectionLabel {
+    font-size: 1.125rem;
+    /* Bumped up to 18px so it's legible */
+    color: var(--subtle-foreground);
+    font-weight: 500;
+    letter-spacing: normal;
+    /* Removed the wide tracking */
+    /* Removed uppercase to match Figma exactly */
+}
+
+/* 3. Marquee Viewport — the visible window that clips & masks the track */
+.marqueeViewport {
+    width: 100%;
+    overflow: hidden;
+
+    /* Soft fade at horizontal edges */
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+/* Pause the entire track on viewport hover */
+.marqueeViewport:hover .marqueeTrack {
+    animation-play-state: paused;
+}
+
+/* 4. Marquee Track */
+.marqueeTrack {
+    display: flex;
+    align-items: center;
+    /* Hardcoded a sleek, consistent gap between phrases instead of relying on card math */
+    gap: 3rem;
+    width: max-content;
+
+    animation: marquee-scroll 45s linear infinite;
+    /* Sped up slightly for smoother feel */
+}
+
+/* 5. Individual Phrase Items */
+.marqueeItem {
+    /* Dropped from H1 to H2 so it doesn't fight the Hero section for attention */
+    font-size: var(--text-fluid-h2);
+    /* The Secret: Dropping the weight from 700 to 400 (Regular) creates that "lighter" feel */
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    white-space: nowrap;
+    cursor: default;
+
+    /* Default: muted (stealth) */
+    color: var(--muted-foreground);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* On hover/focus: illuminate to full white with a slight soft glow */
+.marqueeItem:hover,
+.marqueeItem:focus-visible {
+    color: var(--foreground);
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+}
+
+/* 6. The Keyframe — slides the track left by exactly half its width */
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}

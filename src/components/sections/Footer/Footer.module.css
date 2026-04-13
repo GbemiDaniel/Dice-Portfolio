@@ -1,0 +1,29 @@
+/* Keeps the outer spacing intact */
+.footerContainer {
+    width: 100%;
+    padding-block: var(--spacing-section-pad);
+}
+
+/* NEW: This handles all the centering and spacing INSIDE the reveal wrapper */
+.footerContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: var(--spacing-element-gap);
+    text-align: center;
+    /* Forces inner text like LocalTime to center align */
+}
+
+.socialContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-element-gap);
+}
+
+.dividerContainer {
+    width: 100%;
+    margin-top: var(--spacing-card-gap);
+}

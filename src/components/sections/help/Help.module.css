@@ -1,0 +1,55 @@
+.sectionContainer {
+    width: 100%;
+}
+
+.helpWrapper {
+    width: 100%;
+}
+
+/* 2. Layout layer — mobile first */
+.helpCard {
+    padding: var(--pad-card-y) var(--pad-card-x) 0 var(--pad-card-x);
+    gap: var(--spacing-card-gap);
+    min-height: clamp(400px, 45cqw, 500px);
+    overflow: hidden;
+}
+
+.contentWrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 10;
+    padding-bottom: var(--spacing-card-gap);
+}
+
+.avatarWrapper {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    flex-shrink: 0;
+}
+
+/* 3. Tablet and Desktop Layout */
+@media (min-width: 768px) {
+    .helpCard {
+        padding: var(--pad-card-y) 0 0 var(--pad-card-x);
+        align-items: stretch;
+        min-height: 0;
+    }
+
+    .contentWrapper {
+        padding-bottom: var(--pad-card-y);
+        padding-right: var(--pad-card-x);
+    }
+
+    .avatarWrapper {
+        /* THE FIX: Narrowed the max-width slightly and enforced a portrait aspect ratio.
+           This guarantees the image box is always taller than it is wide, 
+           preventing object-cover from chopping his head off! */
+        width: clamp(220px, 28cqw, 320px);
+        height: auto;
+        aspect-ratio: 4 / 5;
+        min-height: unset;
+    }
+}

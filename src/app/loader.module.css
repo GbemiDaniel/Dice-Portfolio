@@ -1,0 +1,76 @@
+.scene {
+  width: 120px; /* Scaled up for extra heft */
+  height: 120px;
+  perspective: 800px; /* Flatter perspective enhances solid chunky feel */
+}
+
+.cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: tumble 10s infinite linear; /* Slower, heavier rotation */
+}
+
+/* Semi-Opaque Heavy Glass Core */
+.face {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  /* Dense frosted glass surface */
+  background: linear-gradient(135deg, rgba(30,30,30,0.95), rgba(5,5,5,0.98));
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 12px;
+  
+  /* Outer rim lighting */
+  border: 1px solid rgba(255, 255, 255, 0.05); 
+  border-top-color: rgba(255, 255, 255, 0.2); 
+  border-left-color: rgba(255, 255, 255, 0.15);
+  border-bottom-color: rgba(0, 0, 0, 0.8);
+  border-right-color: rgba(0, 0, 0, 0.6);
+
+  /* Precision Milled Inner Bezel */
+  box-shadow: 
+    inset 0 0 0 4px rgba(5, 5, 5, 0.9), /* Thick dark outer frame holding the glass */
+    inset 1px 1px 2px 4px rgba(255, 255, 255, 0.15), /* Highlight catching on inner bevel slope */
+    inset -1px -1px 2px 4px rgba(0, 0, 0, 0.9), /* Deep shadow on interior bevel */
+    inset 0 0 20px 8px rgba(0, 0, 0, 0.6), /* Central dimming */
+    0 4px 20px rgba(0,0,0,0.4); /* Edge lighting bleed / ambient drop shadow */
+}
+
+/* Shifting Specular Light Reflection */
+.face::after {
+  content: "";
+  position: absolute;
+  inset: 5px; /* Confined inside the frame bezel */
+  border-radius: 7px;
+  background: linear-gradient(110deg, 
+    transparent 10%, 
+    rgba(255, 255, 255, 0.05) 35%, 
+    rgba(255, 255, 255, 0.15) 50%, 
+    rgba(255, 255, 255, 0.05) 65%, 
+    transparent 90%);
+  background-size: 300% 100%;
+  animation: surface-shine 6s infinite linear;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+@keyframes surface-shine {
+  0% { background-position: -100% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* 3D Geometry Extrusions (Translate is 1/2 of 120px) */
+.front  { transform: rotateY(  0deg) translateZ(60px); }
+.back   { transform: rotateY(180deg) translateZ(60px); }
+.right  { transform: rotateY( 90deg) translateZ(60px); }
+.left   { transform: rotateY(-90deg) translateZ(60px); }
+.top    { transform: rotateX( 90deg) translateZ(60px); }
+.bottom { transform: rotateX(-90deg) translateZ(60px); }
+
+@keyframes tumble {
+  0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  100% { transform: rotateX(720deg) rotateY(1080deg) rotateZ(360deg); }
+}

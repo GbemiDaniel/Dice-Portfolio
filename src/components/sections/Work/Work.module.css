@@ -1,0 +1,53 @@
+.sectionContainer {
+    width: 100%;
+}
+
+.workGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-card-gap);
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .workGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.glassCard {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: clamp(1.5rem, 4cqw, 2.5rem);
+}
+
+.projectCard {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    container-type: inline-size;
+    display: block; 
+}
+
+.gradientOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.contentWrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+    padding: var(--spacing-card-pad);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-element-gap);
+}

@@ -1,0 +1,13 @@
+.globalContainer {
+    width: 100%;
+    /* The absolute maximum width before the site stops stretching */
+    max-width: 1440px;
+    /* Keeps the container dead-center on ultra-wide monitors */
+    margin: 0 auto;
+
+    /* FLUID GUTTER: 
+     Mobile gets 1.5rem padding. 
+     Tablet/Laptop scales dynamically based on viewport width (5vw).
+     Ultra-wide maxes out at 4rem. */
+    padding-inline: clamp(1.5rem, 5vw, 4rem);
+}
