@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import styles from "./interactions.module.css";
 
 export function SocialIconButton({ children, url = "#", ariaLabel, className }) {
     return (
@@ -8,18 +9,18 @@ export function SocialIconButton({ children, url = "#", ariaLabel, className }) 
             href={url}
             aria-label={ariaLabel}
             className={cn(
-                // Base Layout: Flex center, fluid-ish size matching the design
+                // Tailwind: Sizing, Layout, and Base Stealth State
                 "flex items-center justify-center shrink-0 w-10 h-10 sm:w-11 sm:h-11",
-                // Visuals: Transparent base, 10% white border, squarcle radius
-                "bg-transparent border border-white/10 rounded-xl",
-                "text-muted-foreground",
-                // Apple-Tier Interactivity: Easing, springy scale, invert colors on hover
-                "transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)]",
-                "hover:scale-[1.05] active:scale-[0.95] hover:bg-white hover:text-black hover:border-white",
+                "rounded-xl bg-transparent border border-white/10 text-muted-foreground hover:text-white",
+                // CSS Module: The complex hover physics and exact icon scaling
+                styles.appleGlass,
+                styles.scaleIcon,
                 className
             )}
         >
-            {children}
+            <span className="relative z-10 flex items-center justify-center">
+                {children}
+            </span>
         </Link>
     );
 }

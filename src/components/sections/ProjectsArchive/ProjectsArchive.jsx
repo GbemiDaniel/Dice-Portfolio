@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { SpringReveal } from "@/components/ui/spring-reveal";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronRight } from "lucide-react"; // Added ChevronRight
 
 // Phase 2: Data-Driven Architecture
 const projectsData = [
@@ -15,7 +15,6 @@ const projectsData = [
         title: "Thrifty Store",
         description: "A user-focused digital learning platform that ensures easy dashboard tracking and high-frequency visiting.",
         tags: ["UX", "UI DESIGN", "STRATEGY", "WEB DEVELOPMENT"],
-        // Using high-quality abstract placeholders from Unsplash to test glass texture blending
         imagePath: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop",
         link: "#"
     },
@@ -42,16 +41,32 @@ const projectsData = [
 export function ProjectsArchive() {
     return (
         <section className="w-full flex flex-col pt-8 md:pt-16">
-            
+
             {/* Header Section */}
             <SpringReveal direction="up" delay={0.1}>
-                <div className="flex flex-col gap-[var(--spacing-element-gap)] mb-[clamp(3rem,6vw,5rem)]">
-                    <span className="text-xs tracking-widest text-muted-foreground uppercase font-medium">
-                        Portfolio
-                    </span>
-                    <h1 className="text-[length:var(--text-fluid-h1)] font-bold tracking-tighter leading-none uppercase">
-                        Selected Works
-                    </h1>
+                <div className="flex flex-col mb-[clamp(3rem,6vw,5rem)]">
+
+                    {/* NEW: Breadcrumb Navigation */}
+                    <nav className="flex items-center gap-2 text-[10px] sm:text-xs font-semibold tracking-widest uppercase mb-6 sm:mb-10">
+                        <Link
+                            href="/"
+                            className="text-muted-foreground transition-colors duration-300 hover:text-foreground"
+                        >
+                            Home
+                        </Link>
+                        <ChevronRight className="w-3 h-3 text-muted-foreground/60" />
+                        <span className="text-foreground">Work</span>
+                    </nav>
+
+                    {/* Title Group */}
+                    <div className="flex flex-col gap-[var(--spacing-element-gap)]">
+                        <span className="text-xs tracking-widest text-muted-foreground uppercase font-medium">
+                            Portfolio
+                        </span>
+                        <h1 className="text-[length:var(--text-fluid-h1)] font-bold tracking-tighter leading-none uppercase">
+                            Selected Works
+                        </h1>
+                    </div>
                 </div>
             </SpringReveal>
 
@@ -63,9 +78,9 @@ export function ProjectsArchive() {
                     return (
                         <SpringReveal key={project.id} direction="up" scale={true} delay={0.1 + (index * 0.15)}>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(2.5rem,5vw,4rem)] items-center group">
-                                
+
                                 {/* Image / Media Column */}
-                                <Link 
+                                <Link
                                     href={project.link}
                                     className={cn(
                                         "order-1 aspect-[4/3] md:aspect-[16/10] relative rounded-[var(--radius-card-fluid)] overflow-hidden glass-panel flex flex-col justify-center items-center w-full",
@@ -89,7 +104,7 @@ export function ProjectsArchive() {
                                     "order-2 flex flex-col",
                                     isEven ? "md:order-1 md:pr-[10%]" : "md:order-2 md:pl-[10%]"
                                 )}>
-                                    
+
                                     {/* Category */}
                                     <div className="flex items-center gap-4 mb-4">
                                         <div className="h-[1px] w-8 bg-white/20" />
@@ -111,8 +126,8 @@ export function ProjectsArchive() {
                                     {/* Map Tags to Premium Pills */}
                                     <div className="flex flex-wrap gap-2 lg:gap-3 mb-10">
                                         {project.tags.map((tag, tIndex) => (
-                                            <span 
-                                                key={tIndex} 
+                                            <span
+                                                key={tIndex}
                                                 className="bg-white/5 border border-white/10 text-muted-foreground text-[0.75rem] rounded-full px-3 py-1 font-medium tracking-wider uppercase"
                                             >
                                                 {tag}
@@ -121,7 +136,7 @@ export function ProjectsArchive() {
                                     </div>
 
                                     {/* View Case Study CTA with polished interaction */}
-                                    <Link 
+                                    <Link
                                         href={project.link}
                                         aria-label={`View detailed case study for ${project.title}`}
                                         className="inline-flex items-center gap-2 w-fit group/link"

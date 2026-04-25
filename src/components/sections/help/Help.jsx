@@ -40,19 +40,25 @@ export function Help() {
                             How I can help <span className="text-timeless italic">you</span>?
                         </h2>
 
-                        {/* Services Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        {/* Services Grid: Typographic Scaling Fix applied */}
+                        {/* Services Grid: Responsive Flex-Wrapping Fix applied */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8 xl:mb-10">
                             {services.map((service, index) => (
                                 <div key={index} className="flex flex-col gap-3 min-w-0">
-                                    <div className="flex flex-col xl:flex-row xl:items-center gap-2 xl:gap-3">
-                                        <h3 className="font-bold text-foreground text-lg xl:text-xl whitespace-nowrap truncate">
+
+                                    {/* 🚀 Changed to stack on mobile, row on sm+ */}
+                                    <div className="flex flex-col items-start sm:flex-row sm:items-center gap-2 sm:gap-3">
+                                        <h3 className="font-bold text-foreground text-base sm:text-lg leading-tight">
                                             {service.title}
                                         </h3>
-                                        <span className="text-xs px-3 py-1 rounded-full border border-white/10 bg-white/5 text-muted-foreground w-fit shrink-0">
+
+                                        {/* Added mt-1 on mobile for visual separation, removed on sm+ */}
+                                        <span className="text-[0.7rem] sm:text-xs px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-muted-foreground w-fit shrink-0 mt-1 sm:mt-0">
                                             {service.price}
                                         </span>
                                     </div>
-                                    <p className="text-[length:var(--text-fluid-p)] text-muted-foreground leading-relaxed">
+
+                                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                                         {service.desc}
                                     </p>
                                 </div>
@@ -60,11 +66,12 @@ export function Help() {
                         </div>
 
                         {/* Universal Button Component -> Triggers Modal */}
+                        {/* Stripped hardcoded hover colors to let CSS module physics take over */}
                         <InteractiveButton
                             onClick={() => setIsModalOpen(true)}
-                            className="w-full rounded-xl py-6 bg-transparent border border-white/20 text-white hover:bg-white hover:text-black"
+                            className="w-full rounded-xl py-6 bg-transparent border border-white/20 text-white"
                         >
-                            <span>Get In Touch</span>
+                            Get In Touch
                             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                         </InteractiveButton>
                     </div>

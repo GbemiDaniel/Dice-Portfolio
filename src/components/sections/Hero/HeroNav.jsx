@@ -1,6 +1,5 @@
 "use client";
 
-
 import { useState } from "react";
 import Image from "next/image";
 import { InteractiveButton } from "@/components/ui/interactive-button";
@@ -38,7 +37,6 @@ export function HeroNav() {
         <div className="flex flex-wrap items-center justify-between gap-[var(--spacing-card-gap)] w-full shrink-0">
 
             {/* Identity Block */}
-            {/* Identity Block */}
             <div className="flex items-center gap-[var(--spacing-element-gap)] shrink-0">
                 <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border border-white/10 shrink-0">
                     <Image
@@ -50,7 +48,6 @@ export function HeroNav() {
                         quality={95}
                     />
                 </div>
-                {/* UPGRADED TYPOGRAPHY: Replaced massive fluid var with precise UI base sizes */}
                 <div className="flex flex-col justify-center">
                     <span className="text-foreground font-semibold tracking-tight text-base sm:text-lg leading-tight">
                         Hey, I'm Daniel.
@@ -80,18 +77,21 @@ export function HeroNav() {
                     </SocialIconButton>
                 </div>
 
-                {/* Using the Universal Interactive Button */}
-                <InteractiveButton onClick={() => setIsModalOpen(true)}
-                    className="rounded-full px-5 sm:px-6 py-2.5 sm:py-3 bg-transparent border border-white/20 text-white hover:bg-white hover:text-black shrink-0">
+                {/* Universal Interactive Button: Stripped of hardcoded hover states */}
+                <InteractiveButton
+                    onClick={() => setIsModalOpen(true)}
+                    // 🚀 Swapped py-* for explicit h-10 and sm:h-11 to perfectly match the social icons
+                    className="rounded-full h-10 sm:h-11 px-6 sm:px-8 shrink-0 text-white"
+                >
                     Get In Touch
                 </InteractiveButton>
             </div>
+
             {/* MODAL INJECTION */}
             <ContactModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
             />
-
         </div>
     );
 }

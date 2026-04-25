@@ -27,7 +27,6 @@
 
 /* 3. Marquee Viewport — the visible window that clips & masks the track */
 .marqueeViewport {
-    width: 100%;
     overflow: hidden;
 
     /* Soft fade at horizontal edges */
@@ -84,5 +83,21 @@
 
     100% {
         transform: translateX(-50%);
+    }
+}
+
+/* 7. Reverse Track for Dual-Row Layout */
+.marqueeTrackReverse {
+    /* 30s instead of 45s to maintain identical speed since this row has fewer items (4 vs 6) */
+    animation: marquee-scroll-reverse 30s linear infinite;
+}
+
+@keyframes marquee-scroll-reverse {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0);
     }
 }

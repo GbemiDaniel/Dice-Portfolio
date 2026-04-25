@@ -15,11 +15,11 @@ export function ContactModal({ isOpen, onClose }) {
             <DialogContent
                 showCloseButton={false}
                 className={cn(
-                    // 1. Root Structure: Fixed max height so it never breaks the viewport again
-                    "sm:max-w-2xl p-0 gap-0 border-white/10",
+                    // 1. Root Structure
+                    "sm:max-w-2xl p-0 gap-0 border-white/5 shadow-2xl",
                     "max-h-[85vh] overflow-hidden flex flex-col",
-                    // 2. The Deep Dark Fix: Ultra-deep near-black matching target design
-                    "bg-black/80 backdrop-blur-3xl glass-panel",
+                    // 2. The Deep Dark Fix: Replaced bg-black/80 with a near-solid deep dark
+                    "bg-[#0a0a0a] md:bg-[#0a0a0a]/98 backdrop-blur-xl",
                     // 3. Fluid radiuses
                     "rounded-[length:var(--radius-card-fluid)]"
                 )}
@@ -31,10 +31,7 @@ export function ContactModal({ isOpen, onClose }) {
                     <X className="w-5 h-5" />
                 </button>
 
-                {/* 🚀 THE SCROLL FADE TRICK:
-                    This inner div handles the scrolling. The maskImage CSS creates a
-                    transparent gradient at the top and bottom, making content smoothly "blur off".
-                */}
+                {/* 🚀 THE SCROLL FADE TRICK */}
                 <div
                     className="overflow-y-auto custom-scrollbar flex-1 flex flex-col px-[var(--spacing-card-pad)] py-[calc(var(--spacing-card-pad)*1.5)] gap-[var(--spacing-card-gap)]"
                     style={{
@@ -119,9 +116,11 @@ export function ContactModal({ isOpen, onClose }) {
                         </div>
 
                         {/* Submit Button */}
+                        {/* Submit Button */}
                         <div className="mt-4">
                             <InteractiveButton
-                                className="w-full rounded-xl py-4 bg-white text-black hover:bg-white/90 border-0 flex justify-center items-center gap-2"
+                                // Stripped bg-white/text-black, replaced with our global transparent border style
+                                className="w-full rounded-xl py-4 bg-transparent border border-white/20 text-white flex justify-center items-center gap-2 group"
                             >
                                 <span className="font-medium">Send Message</span>
                                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />

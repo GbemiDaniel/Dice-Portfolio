@@ -3,9 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { SpringReveal } from "@/components/ui/spring-reveal";
-import { InteractiveButton } from "@/components/ui/interactive-button";
 import { ArrowRight } from "lucide-react";
 import styles from "./Work.module.css";
+import interactStyles from "@/components/ui/interactions.module.css";
 
 const projects = [
     {
@@ -33,7 +33,6 @@ const projects = [
 export function Work() {
     return (
         <section className={styles.sectionContainer}>
-            {/* Project Grid */}
             <div className={styles.workGrid}>
                 {projects.map((project, index) => (
                     <SpringReveal key={index} direction="up" scale={true} delay={0.1 + (index * 0.15)}>
@@ -50,13 +49,14 @@ export function Work() {
                                 sizes="(max-width: 768px) 100vw, 50vw"
                             />
 
-                            {/* Gradient Overlay */}
+                            {/* Darker, taller gradient protection */}
                             <div className={styles.gradientOverlay} />
 
                             {/* Content Wrapper */}
                             <div className={styles.contentWrapper}>
-                                {/* Title with Diagonal Arrow */}
-                                <h3 className="text-[length:var(--text-fluid-h3)] font-medium text-foreground tracking-tight flex items-center gap-2">
+
+                                {/* Title with precise alignment */}
+                                <h3 className="text-xl md:text-2xl lg:text-[length:var(--text-fluid-h3)] font-medium text-foreground tracking-tight flex items-center gap-2.5 mb-1.5">
                                     {project.title}
                                     <svg
                                         width="0.8em"
@@ -64,7 +64,7 @@ export function Work() {
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
-                                        strokeWidth="2"
+                                        strokeWidth="2.5"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
                                         className="opacity-70 [@media(hover:hover)]:group-hover:opacity-100 transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] [@media(hover:hover)]:group-hover:translate-x-0.5 [@media(hover:hover)]:group-hover:-translate-y-0.5 transform"
@@ -74,8 +74,10 @@ export function Work() {
                                     </svg>
                                 </h3>
 
-                                {/* Description */}
-                                <p className="text-[length:var(--text-fluid-p)] text-muted-foreground leading-relaxed max-w-[80%]">
+                                {/* 🚀 THE FIX: Added 'truncate' and 'block' to force strict single-line rendering */}
+                                {/* 🚀 THE FIX: Removed 'truncate' and added a smooth transparent fade mask */}
+                                {/* 🚀 THE FIX: Removed 'truncate'. Added proper line-heights for multi-line readability. */}
+                                <p className="text-sm md:text-base text-muted-foreground leading-snug md:leading-relaxed max-w-[90%] md:max-w-[85%]">
                                     {project.desc}
                                 </p>
                             </div>
@@ -84,18 +86,22 @@ export function Work() {
                 ))}
             </div>
 
-            {/* NEW: Browse All Work Button */}
+            {/* Browse All Work Button */}
             <SpringReveal direction="up" delay={0.2}>
                 <div className="flex justify-center mt-12 md:mt-16 w-full">
-                    <InteractiveButton
-                        asChild
-                        className="w-full sm:w-auto rounded-xl py-4 px-8 bg-transparent border border-white/20 text-white hover:bg-white hover:text-black flex justify-center items-center gap-2 group"
+                    <Link
+                        href="/projects"
+                        className={cn(
+                            "inline-flex items-center justify-center gap-2 w-full sm:w-auto rounded-xl py-4 px-8 relative overflow-hidden group outline-none",
+                            "bg-transparent border border-white/20 text-white/80 hover:text-white",
+                            interactStyles.appleGlass,
+                            interactStyles.scaleButton
+                        )}
                     >
-                        <Link href="/projects">
-                            <span className="font-medium">Browse All Work</span>
-                            <ArrowRight className="w-4 h-4 transition-transform duration-300 [@media(hover:hover)]:group-hover:translate-x-0.5 [@media(hover:hover)]:group-hover:-translate-y-0.5" />
-                        </Link>
-                    </InteractiveButton>
+                        <span className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.08] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
+                        <span className="font-medium relative z-10">Browse All Work</span>
+                        <ArrowRight className="w-4 h-4 relative z-10 transition-transform duration-300 [@media(hover:hover)]:group-hover:translate-x-0.5 [@media(hover:hover)]:group-hover:-translate-y-0.5" />
+                    </Link>
                 </div>
             </SpringReveal>
         </section>

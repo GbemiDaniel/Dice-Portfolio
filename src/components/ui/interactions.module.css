@@ -1,0 +1,43 @@
+/* src/components/ui/interactions.module.css */
+
+.appleGlass {
+    /* The custom spring curve */
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+    /* Ensure the rim light pseudo-element is contained */
+    position: relative;
+    overflow: hidden;
+}
+
+.appleGlass:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    /* The volumetric shadow + the sharp 1px inner rim light */
+    box-shadow:
+        0 8px 32px -8px rgba(0, 0, 0, 0.5),
+        inset 0 1px 2px rgba(255, 255, 255, 0.25);
+}
+
+.appleGlass:active {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: none;
+}
+
+/* Distinct scale curves based on component mass */
+.scaleIcon:hover {
+    transform: scale(1.08);
+}
+
+.scaleIcon:active {
+    transform: scale(0.92);
+}
+
+.scaleButton:hover {
+    transform: scale(1.03);
+}
+
+.scaleButton:active {
+    transform: scale(0.97);
+}
