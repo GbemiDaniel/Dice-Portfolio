@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function ProjectsPage() {
     return (
-        <main className="flex flex-col gap-[var(--spacing-container-y)] pb-24 overflow-hidden pt-[clamp(2rem,5vw,4rem)]">
+        <main className="flex flex-col gap-(--spacing-container-y) pb-24 overflow-hidden pt-[clamp(2rem,5vw,4rem)]">
             
             <Container>
                {/* Main Archive Grid */}

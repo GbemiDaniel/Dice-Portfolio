@@ -19,10 +19,10 @@ export function LocalTime() {
         // Return skeleton/placeholder to prevent hydration mismatch
         return (
             <div className="flex flex-col items-center justify-center opacity-0 pointer-events-none">
-                <p className="text-muted-foreground text-[length:var(--text-fluid-p)]">
+                <p className="text-muted-foreground text-p">
                     Loading time...
                 </p>
-                <span className="block text-muted-foreground text-[length:var(--text-fluid-p)] opacity-70 mt-1">
+                <span className="block text-muted-foreground text-p opacity-70 mt-1">
                     Local time in Lagos, Nigeria.
                 </span>
             </div>
@@ -41,10 +41,10 @@ export function LocalTime() {
 
     return (
         <div className="flex flex-col items-center justify-center text-center">
-            <p className="text-muted-foreground text-[length:var(--text-fluid-p)]">
+            <p className="text-muted-foreground text-p">
                 {formattedTime}
             </p>
-            <span className="block text-muted-foreground text-[length:var(--text-fluid-p)] opacity-70 mt-1">
+            <span className="block text-muted-foreground text-p opacity-70 mt-1">
                 Local time in Lagos, Nigeria.
             </span>
         </div>

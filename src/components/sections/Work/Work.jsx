@@ -1,3 +1,4 @@
+// src/components/sections/Work.jsx
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,56 +8,36 @@ import { ArrowRight } from "lucide-react";
 import styles from "./Work.module.css";
 import interactStyles from "@/components/ui/interactions.module.css";
 
-const projects = [
-    {
-        title: "Thrifty Store",
-        desc: "Website for a digital marketing & paid advertising agency.",
-        image: "/images/thrifty-store.png"
-    },
-    {
-        title: "Scalable",
-        desc: "Landing Page for an analytics & sales SaaS business.",
-        image: "/images/project-2.jpg"
-    },
-    {
-        title: "Limitless",
-        desc: "Landing page for a design subscription service.",
-        image: "/images/project-3.jpg"
-    },
-    {
-        title: "Solopreneur",
-        desc: "Website for a freelance web designer & digital creator.",
-        image: "/images/project-4.jpg"
-    }
-];
+// 🚀 SSOT: Importing the centralized data store with restored descriptions
+import { projectsData } from "@/data/projects";
 
 export function Work() {
     return (
         <section className={styles.sectionContainer}>
             <div className={styles.workGrid}>
-                {projects.map((project, index) => (
-                    <SpringReveal key={index} direction="up" scale={true} delay={0.1 + (index * 0.15)}>
+                {projectsData.map((project, index) => (
+                    <SpringReveal key={project.id} direction="up" scale={true} delay={0.1 + (index * 0.15)}>
                         <Link
-                            href="#"
+                            href={project.link} // 🚀 Points to dynamic Case Study
                             className={cn(styles.glassCard, styles.projectCard, "group")}
                         >
                             {/* Background Image */}
                             <Image
-                                src={project.image}
-                                alt={project.title}
+                                src={project.thumbnailImage} // 🚀 Restored clothing mockups from image_4.png
+                                alt={`Background image for ${project.title}`}
                                 fill
                                 className="object-cover transition-transform duration-700 ease-out [@media(hover:hover)]:group-hover:scale-105"
                                 sizes="(max-width: 768px) 100vw, 50vw"
                             />
 
-                            {/* Darker, taller gradient protection */}
+                            {/* Darker, taller gradient protection (Original Layout preserved) */}
                             <div className={styles.gradientOverlay} />
 
                             {/* Content Wrapper */}
                             <div className={styles.contentWrapper}>
 
                                 {/* Title with precise alignment */}
-                                <h3 className="text-xl md:text-2xl lg:text-[length:var(--text-fluid-h3)] font-medium text-foreground tracking-tight flex items-center gap-2.5 mb-1.5">
+                                <h3 className="text-xl md:text-2xl lg:text-(length:--text-fluid-h3) font-medium text-foreground tracking-tight flex items-center gap-2.5 mb-1.5">
                                     {project.title}
                                     <svg
                                         width="0.8em"
@@ -74,11 +55,10 @@ export function Work() {
                                     </svg>
                                 </h3>
 
-                                {/* 🚀 THE FIX: Added 'truncate' and 'block' to force strict single-line rendering */}
-                                {/* 🚀 THE FIX: Removed 'truncate' and added a smooth transparent fade mask */}
-                                {/* 🚀 THE FIX: Removed 'truncate'. Added proper line-heights for multi-line readability. */}
+                                {/* 🚀 THE VISUAL FIX: Strict adherence to shortDesc */}
+                                {/* By pointing specifically to shortDesc, the design remains one-line and crisp on desktop. */}
                                 <p className="text-sm md:text-base text-muted-foreground leading-snug md:leading-relaxed max-w-[90%] md:max-w-[85%]">
-                                    {project.desc}
+                                    {project.shortDesc}
                                 </p>
                             </div>
                         </Link>
@@ -86,7 +66,7 @@ export function Work() {
                 ))}
             </div>
 
-            {/* Browse All Work Button */}
+            {/* Browse All Work Button (Original Layout preserved) */}
             <SpringReveal direction="up" delay={0.2}>
                 <div className="flex justify-center mt-12 md:mt-16 w-full">
                     <Link
@@ -98,7 +78,7 @@ export function Work() {
                             interactStyles.scaleButton
                         )}
                     >
-                        <span className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.08] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
+                        <span className="absolute inset-0 bg-linear-to-tr from-transparent via-white/8 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
                         <span className="font-medium relative z-10">Browse All Work</span>
                         <ArrowRight className="w-4 h-4 relative z-10 transition-transform duration-300 [@media(hover:hover)]:group-hover:translate-x-0.5 [@media(hover:hover)]:group-hover:-translate-y-0.5" />
                     </Link>

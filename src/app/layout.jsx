@@ -35,8 +35,8 @@ export default function RootLayout({ children }) {
       className={cn("dark", "h-full", "antialiased", jakarta.variable, instrument.variable, "font-sans", inter.variable)}
     >
       <body className="min-h-full flex flex-col">
-        <SplashScreen />
         {children}
+        <SplashScreen />
       </body>
     </html>
   );

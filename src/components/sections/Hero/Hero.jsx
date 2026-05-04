@@ -28,13 +28,13 @@ export function Hero() {
 
                             {/* GAP INJECTION */}
                             <div className="flex flex-col gap-text-gap">
-                                <h1 className="text-[length:var(--text-fluid-h1)] font-medium text-foreground tracking-tighter leading-[1.05]">
+                                <h1 className="text-h1 font-medium text-foreground tracking-tighter leading-[1.05]">
                                     Obsessed with creating <span className="text-timeless">timeless</span>
                                     <br /> digital experiences and products.
                                 </h1>
 
                                 {/* YOUR EXACT P TAG */}
-                                <p className="text-[length:var(--text-fluid-p)] text-muted-foreground leading-tight max-md">
+                                <p className="text-p text-muted-foreground leading-tight max-md">
                                     Hey, I'm Daniel, welcome to my world. I love building beautiful, timeless websites & digital experiences with tools like Figma, Adobe Illustrator & Framer.
                                 </p>
                             </div>

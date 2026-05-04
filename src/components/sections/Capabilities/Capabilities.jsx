@@ -29,11 +29,11 @@ export function Capabilities() {
             <Container className="flex flex-col">
                 {/* Header Section */}
                 <SpringReveal direction="up" delay={0.1}>
-                <div className="flex flex-col gap-[var(--spacing-element-gap)] mb-[clamp(3rem,6vw,5rem)]">
+                <div className="flex flex-col gap-(--spacing-element-gap) mb-[clamp(3rem,6vw,5rem)]">
                     <span className="text-xs tracking-widest text-muted-foreground uppercase font-medium">
                         Core Expertise
                     </span>
-                    <h2 className="text-[length:var(--text-fluid-h2)] font-bold tracking-tighter leading-none uppercase text-foreground">
+                    <h2 className="text-(length:--text-fluid-h2) font-bold tracking-tighter leading-none uppercase text-foreground">
                         Capabilities
                     </h2>
                 </div>
@@ -45,7 +45,7 @@ export function Capabilities() {
                     const IconComponent = cap.icon;
                     return (
                         <SpringReveal key={index} direction="up" scale={true} delay={0.2 + (index * 0.1)}>
-                            <div className="bg-white/[0.02] border border-white/5 rounded-2xl px-card-x py-card-y flex flex-col h-full transition-colors hover:bg-white/[0.04]">
+                            <div className="bg-white/2 border border-white/5 rounded-2xl px-card-x py-card-y flex flex-col h-full transition-colors hover:bg-white/4">
                                 {/* Icon Wrapper */}
                                 <div className="mb-6 opacity-80">
                                     <IconComponent className="w-6 h-6 text-foreground shrink-0" strokeWidth={1.5} />
@@ -57,7 +57,7 @@ export function Capabilities() {
                                 </h3>
                                 
                                 {/* Card Description */}
-                                <p className="text-[length:var(--text-fluid-p)] text-muted-foreground leading-relaxed">
+                                <p className="text-p text-muted-foreground leading-relaxed">
                                     {cap.desc}
                                 </p>
                             </div>

@@ -36,7 +36,7 @@ export function Help() {
                     {/* Left Side: Content & Services */}
                     <div className={styles.contentWrapper}>
 
-                        <h2 className="text-[length:var(--text-fluid-h2)] font-medium text-foreground tracking-tighter leading-[1.1] mb-6 md:mb-8">
+                        <h2 className="text-(length:--text-fluid-h2) font-medium text-foreground tracking-tighter leading-[1.1] mb-6 md:mb-8">
                             How I can help <span className="text-timeless italic">you</span>?
                         </h2>
 

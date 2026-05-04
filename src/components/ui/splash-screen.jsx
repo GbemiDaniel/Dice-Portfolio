@@ -10,6 +10,15 @@ export function SplashScreen() {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
+    // 1. Instantly check sessionStorage to abort on subsequent visits
+    if (sessionStorage.getItem("hasVisited")) {
+      setIsVisible(false);
+      return;
+    }
+    
+    // 2. Mark as visited for future routing
+    sessionStorage.setItem("hasVisited", "true");
+
     // Lock scroll instantly on client mount
     document.body.style.overflow = "hidden";
 
@@ -60,7 +69,7 @@ export function SplashScreen() {
   return (
     <div
       className={cn(
-        "fixed inset-0 z-[9999] w-screen h-screen bg-[#050505] transition-opacity duration-700",
+        "fixed inset-0 z-9999 w-screen h-screen bg-[#050505] transition-opacity duration-700",
         isFading ? "opacity-0 pointer-events-none" : "opacity-100"
       )}
     >

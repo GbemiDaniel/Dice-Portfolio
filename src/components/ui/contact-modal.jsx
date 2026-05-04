@@ -21,38 +21,38 @@ export function ContactModal({ isOpen, onClose }) {
                     // 2. The Deep Dark Fix: Replaced bg-black/80 with a near-solid deep dark
                     "bg-[#0a0a0a] md:bg-[#0a0a0a]/98 backdrop-blur-xl",
                     // 3. Fluid radiuses
-                    "rounded-[length:var(--radius-card-fluid)]"
+                    "rounded-(--radius-card-fluid)"
                 )}
             >
                 <button
                     onClick={onClose}
-                    className="absolute top-[var(--spacing-element-gap)] right-[var(--spacing-element-gap)] z-[60] text-muted-foreground hover:text-white transition-colors bg-black/40 backdrop-blur-md rounded-full p-2 border border-white/10"
+                    className="absolute top-(--spacing-element-gap) right-(--spacing-element-gap) z-60 text-muted-foreground hover:text-white transition-colors bg-black/40 backdrop-blur-md rounded-full p-2 border border-white/10"
                 >
                     <X className="w-5 h-5" />
                 </button>
 
                 {/* 🚀 THE SCROLL FADE TRICK */}
                 <div
-                    className="overflow-y-auto custom-scrollbar flex-1 flex flex-col px-[var(--spacing-card-pad)] py-[calc(var(--spacing-card-pad)*1.5)] gap-[var(--spacing-card-gap)]"
+                    className="overflow-y-auto custom-scrollbar flex-1 flex flex-col px-card-pad py-[calc(var(--spacing-card-pad)*1.5)] gap-(--spacing-card-gap)"
                     style={{
                         WebkitMaskImage: 'linear-gradient(to bottom, transparent 0px, black var(--spacing-card-pad), black calc(100% - var(--spacing-card-pad)), transparent 100%)',
                         maskImage: 'linear-gradient(to bottom, transparent 0px, black var(--spacing-card-pad), black calc(100% - var(--spacing-card-pad)), transparent 100%)'
                     }}
                 >
                     <DialogHeader className="flex flex-col gap-2">
-                        <DialogTitle className="text-[length:var(--text-fluid-h2)] font-medium text-foreground tracking-tight text-center">
+                        <DialogTitle className="text-(length:--text-fluid-h2) font-medium text-foreground tracking-tight text-center">
                             Let's have a <span className="text-timeless italic font-light">chat!</span>
                         </DialogTitle>
-                        <DialogDescription className="text-center text-muted-foreground text-[length:var(--text-fluid-p)] max-w-lg mx-auto leading-relaxed">
+                        <DialogDescription className="text-center text-muted-foreground text-p max-w-lg mx-auto leading-relaxed">
                             Enter your details below and I'll get back to you as soon as possible.
                         </DialogDescription>
                     </DialogHeader>
 
                     {/* Form Grid */}
-                    <form className="flex flex-col gap-[var(--spacing-element-gap)]" onSubmit={(e) => e.preventDefault()}>
+                    <form className="flex flex-col gap-(--spacing-element-gap)" onSubmit={(e) => e.preventDefault()}>
 
                         {/* Name Row */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--spacing-element-gap)]">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-(--spacing-element-gap)">
                             <div className="flex flex-col gap-2">
                                 <label className="text-sm font-medium text-foreground/90 ml-1">First Name</label>
                                 <input

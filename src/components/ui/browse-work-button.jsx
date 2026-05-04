@@ -21,7 +21,7 @@ export function BrowseWorkButton({ className }) {
             )}
         >
             {/* The Polish: Sweeping gradient flare overlay that fades in on hover */}
-            <span className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.08] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
+            <span className="absolute inset-0 bg-linear-to-tr from-transparent via-white/8 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
 
             {/* Content Wrapper: Pushed to z-10 so it sits above the background flare */}
             <span className="relative z-10 flex items-center justify-center gap-2 font-medium">

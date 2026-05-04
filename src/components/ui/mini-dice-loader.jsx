@@ -5,7 +5,7 @@ const MiniDot = ({ className = "" }) => (
     <div
         className={cn(
             "w-[22px] h-[22px] rounded-full relative z-10 flex items-center justify-center",
-            "bg-gradient-to-br from-[#c8cbcf] via-[#5b5d61] to-[#1c1c1c]",
+            "bg-linear-to-br from-[#c8cbcf] via-[#5b5d61] to-[#1c1c1c]",
             className
         )}
         style={{ boxShadow: 'none' }} // Remove heavy inner shadow
@@ -26,7 +26,7 @@ export function MiniDiceLoader() {
     };
 
     return (
-        <div className="flex items-center gap-6 z-[50]">
+        <div className="flex items-center gap-6 z-50">
             {/* The 3D Scene Wrapper - Scaled down to ~40px */}
             <div className="relative w-[40px] h-[40px] flex items-center justify-center">
                 <div style={{ transform: 'scale(0.333)', transformOrigin: 'center' }} className="absolute flex items-center justify-center pointer-events-none">

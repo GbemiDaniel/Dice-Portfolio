@@ -54,7 +54,7 @@ export function Footer() {
             <SpringReveal className={styles.footerContent} direction="up" delay={0.2}>
 
                 {/* Logo */}
-                <h2 className="font-serif italic font-light text-[length:var(--text-fluid-h2)] text-foreground tracking-normal">
+                <h2 className="font-serif italic font-light text-(length:--text-fluid-h2) text-foreground tracking-normal">
                     Rolling Dice Studios
                 </h2>
 
@@ -80,7 +80,7 @@ export function Footer() {
                 </div>
 
                 {/* Copyright */}
-                <p className="text-muted-foreground text-[length:var(--text-fluid-p)] w-full mt-[var(--spacing-element-gap)]">
+                <p className="text-muted-foreground text-p w-full mt-(--spacing-element-gap)">
                     &copy; {new Date().getFullYear()} Rolling Dice. All rights reserved.
                 </p>
 

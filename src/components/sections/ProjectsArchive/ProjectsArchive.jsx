@@ -5,38 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { SpringReveal } from "@/components/ui/spring-reveal";
-import { ArrowUpRight, ChevronRight } from "lucide-react"; // Added ChevronRight
+import { ArrowUpRight, ChevronRight } from "lucide-react";
 
-// Phase 2: Data-Driven Architecture
-const projectsData = [
-    {
-        id: "p1",
-        category: "E-Commerce",
-        title: "Thrifty Store",
-        description: "A user-focused digital learning platform that ensures easy dashboard tracking and high-frequency visiting.",
-        tags: ["UX", "UI DESIGN", "STRATEGY", "WEB DEVELOPMENT"],
-        imagePath: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop",
-        link: "#"
-    },
-    {
-        id: "p2",
-        category: "Software",
-        title: "Scalable",
-        description: "A sleek, high-conversion landing page framework designed specifically for analytics and B2B SaaS businesses looking to scale.",
-        tags: ["WEB DESIGN", "DEVELOPMENT", "BRANDING", "FRAMER"],
-        imagePath: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop",
-        link: "#"
-    },
-    {
-        id: "p3",
-        category: "Creative",
-        title: "Limitless",
-        description: "A robust design subscription platform serving seamless request management and high-quality creative output.",
-        tags: ["UX/UI", "PRODUCT DESIGN", "STRATEGY", "WEBFLOW"],
-        imagePath: "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=2574&auto=format&fit=crop",
-        link: "#"
-    }
-];
+// 🚀 THE FIX: Importing the centralized Single Source of Truth
+import { projectsData } from "@/data/projects";
 
 export function ProjectsArchive() {
     return (
@@ -46,7 +18,7 @@ export function ProjectsArchive() {
             <SpringReveal direction="up" delay={0.1}>
                 <div className="flex flex-col mb-[clamp(3rem,6vw,5rem)]">
 
-                    {/* NEW: Breadcrumb Navigation */}
+                    {/* Breadcrumb Navigation */}
                     <nav className="flex items-center gap-2 text-[10px] sm:text-xs font-semibold tracking-widest uppercase mb-6 sm:mb-10">
                         <Link
                             href="/"
@@ -59,19 +31,19 @@ export function ProjectsArchive() {
                     </nav>
 
                     {/* Title Group */}
-                    <div className="flex flex-col gap-[var(--spacing-element-gap)]">
+                    <div className="flex flex-col gap-(--spacing-element-gap)">
                         <span className="text-xs tracking-widest text-muted-foreground uppercase font-medium">
                             Portfolio
                         </span>
-                        <h1 className="text-[length:var(--text-fluid-h1)] font-bold tracking-tighter leading-none uppercase">
+                        <h1 className="text-h1 font-bold tracking-tighter leading-none uppercase">
                             Selected Works
                         </h1>
                     </div>
                 </div>
             </SpringReveal>
 
-            {/* Stacked Projects rendering from Data Array */}
-            <div className="flex flex-col gap-[var(--spacing-container-y)]">
+            {/* Stacked Projects rendering from Global Data Array */}
+            <div className="flex flex-col gap-(--spacing-container-y)">
                 {projectsData.map((project, index) => {
                     const isEven = index % 2 !== 0;
 
@@ -81,14 +53,14 @@ export function ProjectsArchive() {
 
                                 {/* Image / Media Column */}
                                 <Link
-                                    href={project.link}
+                                    href={project.link} // 🚀 Points to dynamic Case Study
                                     className={cn(
-                                        "order-1 aspect-[4/3] md:aspect-[16/10] relative rounded-[var(--radius-card-fluid)] overflow-hidden glass-panel flex flex-col justify-center items-center w-full",
+                                        "order-1 aspect-4/3 md:aspect-16/10 relative rounded-(--radius-card-fluid) overflow-hidden glass-panel flex flex-col justify-center items-center w-full",
                                         isEven ? "md:order-2" : "md:order-1"
                                     )}
                                 >
                                     <Image
-                                        src={project.imagePath}
+                                        src={project.imagePath} // 🚀 Uses the high-res case study image
                                         alt={`Screenshot of ${project.title} project`}
                                         fill
                                         className="object-cover opacity-80 border-0 transition-transform duration-700 ease-out [@media(hover:hover)]:group-hover:scale-105"
@@ -96,7 +68,7 @@ export function ProjectsArchive() {
                                         quality={85}
                                     />
                                     {/* Subtle gradient overlay to match glassmorphism */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                                    <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                                 </Link>
 
                                 {/* Content Column */}
@@ -107,20 +79,20 @@ export function ProjectsArchive() {
 
                                     {/* Category */}
                                     <div className="flex items-center gap-4 mb-4">
-                                        <div className="h-[1px] w-8 bg-white/20" />
+                                        <div className="h-px w-8 bg-white/20" />
                                         <span className="text-xs font-semibold tracking-widest uppercase text-muted-foreground">
                                             {project.category}
                                         </span>
                                     </div>
 
                                     {/* Title */}
-                                    <h2 className="text-[length:var(--text-fluid-h2)] font-bold tracking-tighter leading-[1.1] mb-6 uppercase">
+                                    <h2 className="text-(length:--text-fluid-h2) font-bold tracking-tighter leading-[1.1] mb-6 uppercase">
                                         {project.title}
                                     </h2>
 
                                     {/* Description */}
-                                    <p className="text-[length:var(--text-fluid-p)] text-muted-foreground leading-relaxed mb-8 max-w-md">
-                                        {project.description}
+                                    <p className="text-p text-muted-foreground leading-relaxed mb-8 max-w-md">
+                                        {project.description} {/* 🚀 Uses the long descriptive paragraph */}
                                     </p>
 
                                     {/* Map Tags to Premium Pills */}

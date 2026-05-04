@@ -34,10 +34,10 @@ export function HeroNav() {
     const [isModalOpen, setIsModalOpen] = useState(false)
 
     return (
-        <div className="flex flex-wrap items-center justify-between gap-[var(--spacing-card-gap)] w-full shrink-0">
+        <div className="flex flex-wrap items-center justify-between gap-(--spacing-card-gap) w-full shrink-0">
 
             {/* Identity Block */}
-            <div className="flex items-center gap-[var(--spacing-element-gap)] shrink-0">
+            <div className="flex items-center gap-(--spacing-element-gap) shrink-0">
                 <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border border-white/10 shrink-0">
                     <Image
                         src="/images/hero-avatar-v2.png"
@@ -59,10 +59,10 @@ export function HeroNav() {
             </div>
 
             {/* Actions Block: Socials & CTA */}
-            <div className="flex flex-wrap items-center gap-[var(--spacing-element-gap)]">
+            <div className="flex flex-wrap items-center gap-(--spacing-element-gap)">
 
                 {/* The New Social Squarcles */}
-                <div className="flex items-center gap-2 sm:gap-[var(--spacing-element-gap)]">
+                <div className="flex items-center gap-2 sm:gap-(--spacing-element-gap)">
                     <SocialIconButton ariaLabel="X">
                         <CustomXIcon className="w-[18px] h-[18px]" />
                     </SocialIconButton>
